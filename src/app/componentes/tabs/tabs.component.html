@@ -1,0 +1,112 @@
+<ion-menu side="start" contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+       <ion-title>Master</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="">     
+    <ion-list>          
+        <ion-item (click)="updateIframeSrc('/admin/general/usuarioslista')">
+          <ion-icon slot="start" name="person-circle-outline" style="font-size: 37px;color: dodgerblue;"></ion-icon>
+          <ion-label>{{nombreUsuario1}} </ion-label>
+        </ion-item>
+        <ion-item (click)="updateIframeSrc('/escritorio/indexescritorio/indexescritorioacc')">
+          <ion-icon slot="start" name="home"></ion-icon>
+          <ion-label>Inicio </ion-label>
+        </ion-item>
+        <ion-item (click)="toggleSubMenu('guia')">
+          <ion-icon slot="start" name="volume-high-sharp"></ion-icon>            
+          <ion-label>Guia</ion-label>
+        </ion-item>
+        <ion-list *ngIf="subMenus['guia']">
+          <ion-item (click)="updateIframeSrc('/guia/indexguia/crearguia')">
+            <ion-label class="text-color">Nueva Guia</ion-label>
+          </ion-item>
+          <ion-item (click)="updateIframeSrc('/reportes/indexreportes/buscarguiareportes')">
+            <ion-label class="text-color">Reporte de Guias</ion-label>
+          </ion-item>
+          <ion-item (click)="updateIframeSrc('/status/indexstatus/addguiastatus/uni/1')">
+            <ion-label class="text-color">Status a Guia Individual</ion-label>
+          </ion-item>
+        </ion-list>
+
+        <ion-item (click)="toggleSubMenu('bodega')">
+          <ion-icon slot="start" name="volume-high-sharp"></ion-icon>            
+          <ion-label>Bodega</ion-label>
+        </ion-item>
+        <ion-list *ngIf="subMenus['bodega']">
+          <ion-item (click)="updateIframeSrc('/bodega/bodegarecibo/addbodega')">
+            <ion-label class="text-color">Nuevo Recibo</ion-label>
+          </ion-item>
+          <ion-item (click)="updateIframeSrc('/bodega/bodegarecibo/listarbodega/rg/1')">
+            <ion-label class="text-color">Reporte</ion-label>
+          </ion-item>         
+        </ion-list>
+
+        <ion-item (click)="toggleSubMenu('paquetes')">
+          <ion-icon slot="start" name="volume-high-sharp"></ion-icon>            
+          <ion-label>Paquetes</ion-label>
+        </ion-item>
+        <ion-list *ngIf="subMenus['paquetes']">
+          <ion-item (click)="updateIframeSrc('/bodega/bodegarecibo/addbodegadetalle')">
+            <ion-label class="text-color">Nuevo Paquete</ion-label>
+          </ion-item>
+          <ion-item (click)="updateIframeSrc('/bodega/bodegarecibojs/indexitemsjs')">
+            <ion-label class="text-color">Reporte Paquetes</ion-label>
+          </ion-item>  
+          <ion-item (click)="updateIframeSrc('/bodega/bodegarecibo/recibidorbodega')">
+            <ion-label class="text-color">Recibidor rapido</ion-label>
+          </ion-item>       
+        </ion-list>
+
+        <ion-item (click)="toggleSubMenu('consolidado')">
+          <ion-icon slot="start" name="volume-high-sharp"></ion-icon>            
+          <ion-label>Consolidado</ion-label>
+        </ion-item>
+        <ion-list *ngIf="subMenus['consolidado']">
+          <ion-item (click)="updateIframeSrc('/bodega/bodegarecibo/addbodegadetalle')">
+            <ion-label class="text-color">Nuevo Consolidado</ion-label>
+          </ion-item>
+          <ion-item (click)="updateIframeSrc('/status/addconsostatus/addconsostatusacc')">
+            <ion-label class="text-color">Status consolidado</ion-label>
+          </ion-item>
+          <ion-item (click)="updateIframeSrc('/consolidate/indexconsolidate/indexconsolidateacc/guias/1')">
+            <ion-label class="text-color">Reporte</ion-label>
+          </ion-item>                  
+        </ion-list>  
+    </ion-list>
+  </ion-content>
+  <ion-footer>
+    <ion-toolbar>
+      <ion-item (click)="logout()" lines="none">
+        <ion-icon slot="start" name="person-circle-outline" color="danger"></ion-icon>
+        <ion-label>Cerrar sesión</ion-label>
+      </ion-item> 
+    </ion-toolbar>
+  </ion-footer>
+</ion-menu>
+
+<div>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button >
+      <ion-icon name="caret-back-outline" (click)="goBack()"></ion-icon>
+      Atras
+    </ion-tab-button>
+    <ion-tab-button >
+      <ion-icon name="home" (click)="updateIframeSrc('/escritorio/indexescritorio/indexescritorioacc')"></ion-icon>
+      Inicio
+    </ion-tab-button>
+    <ion-tab-button >
+      <ion-icon name="cube-outline" (click)="MenuConsolidar()"></ion-icon>
+      Consolidar
+    </ion-tab-button>
+    <ion-tab-button>
+      <ion-icon name="grid-outline" (click)="enviarMensaje()"></ion-icon>
+      Opciones
+    </ion-tab-button>
+    <ion-tab-button>
+      <ion-menu-button autoHide="false"><ion-icon name="menu" (click)="toggleMenu()"></ion-icon></ion-menu-button>        
+      Menu
+    </ion-tab-button>
+  </ion-tab-bar>
+</div>

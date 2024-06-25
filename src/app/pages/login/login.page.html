@@ -1,0 +1,67 @@
+<ion-header class="ion-no-border">
+	<ion-toolbar>
+    <ion-item lines="none">
+      <ion-buttons slot="start">
+        <ion-button class="bordered"   >
+          <ion-icon name="cube-outline" style="font-size: 27px;"></ion-icon>    
+        </ion-button>
+      </ion-buttons>
+        <ion-label>         
+          <h3>Ingreso a la Master</h3>
+        </ion-label>  
+    </ion-item>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="center-content">
+  <form (ngSubmit)="login(fLogin)" #fLogin="ngForm" class="formClase">        
+    <div *ngIf="!vista">
+      <ion-text color="primary ion-text-center">
+        <h2>BIENVENIDO <br>INGRESO A LA MASTER </h2>
+      </ion-text>
+      <br><br>
+      <ion-card-content>
+        <ion-item> 
+          <ion-input name="codigoEmpresa" type="text" [(ngModel)]="loginUser.empresaCodigo" required focus label="Digita tu código de empresa" label-placement="floating" fill="outline" placeholder="Enter text"></ion-input>
+
+        </ion-item><br>               
+        <ion-button  color="" shape="round" expand="block" (click)="evaluarCodigo()" style="font-size: 20px;">
+          Siguiente paso
+        </ion-button>
+      </ion-card-content>
+    </div>
+
+    <div *ngIf="vista">
+      <div>
+        <div class="logo-container">
+          <img *ngIf="logo" [src]="logo" class="center-logo">
+        </div>
+        
+        <ion-text color="dark ion-text-center">
+          <h4>{{ nombreEmpresa }}</h4>
+        </ion-text>
+        <ion-item>            
+          <ion-input name="email" type="email" [(ngModel)]="loginUser.email" required label="Ingrese su usuario" label-placement="floating" fill="outline" placeholder="Su nombre de usuario"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>                   
+          <ion-input name="password" type="password" [(ngModel)]="loginUser.password" required label="Coloque su clave" label-placement="floating" fill="outline" placeholder="Ingrese su contraseña">
+          <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+        </ion-input>
+          
+
+        </ion-item>
+        <br>
+        <ion-button type="submit"  shape="round" expand="block" style="font-size: 18px;">
+          Ingresar
+        </ion-button>
+      </div>
+    </div>   
+  </form>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-footer>

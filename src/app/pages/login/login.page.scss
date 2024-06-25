@@ -1,0 +1,36 @@
+.center-content {    
+    justify-content: center;
+    align-items: center;
+    //height: 100%;
+    top: 100px;
+    display: flex;
+  }
+  
+  form {
+    width: 100%;
+   
+  }
+
+  .center-logo {
+    width: 150px;
+    //display: flex;
+    justify-content: center;
+    //align-items: center;
+  }
+
+  .center-text {
+    text-align: center;
+    width: 100%; /* Asegura que el texto ocupe todo el ancho del contenedor */
+  }
+
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;  /* Asegura que el contenedor ocupe todo el ancho disponible */
+    height: 100%; /* Esto solo es necesario si quieres centrar verticalmente también */
+    text-align: center; /* Esto no afecta a los elementos de bloque como img, pero puede ser útil si hay texto */
+}
+
+
+  
