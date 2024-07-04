@@ -20,14 +20,12 @@
         <h2>BIENVENIDO <br>INGRESO A LA MASTER </h2>
       </ion-text>
       <br><br>
-      <ion-card-content>
-        <ion-item> 
-          <ion-input name="codigoEmpresa" type="text" [(ngModel)]="loginUser.empresaCodigo" required focus label="Digita tu código de empresa" label-placement="floating" fill="outline" placeholder="Enter text"></ion-input>
-
-        </ion-item><br>               
-        <ion-button  color="" shape="round" expand="block" (click)="evaluarCodigo()" style="font-size: 20px;">
-          Siguiente paso
-        </ion-button>
+      <ion-card-content>        
+          <ion-input class="large-font centered-input" name="codigoEmpresa" type="text" [(ngModel)]="loginUser.empresaCodigo" required focus label="Digita tu código de empresa" label-placement="floating" fill="outline" placeholder="Ingrese el código aquí"></ion-input>
+          <br>
+          <ion-button  color="" shape="round" expand="block" (click)="evaluarCodigo()" style="font-size: 20px;">
+            Siguiente paso
+          </ion-button>
       </ion-card-content>
     </div>
 
@@ -35,26 +33,21 @@
       <div>
         <div class="logo-container">
           <img *ngIf="logo" [src]="logo" class="center-logo">
-        </div>
-        
+        </div>        
         <ion-text color="dark ion-text-center">
           <h4>{{ nombreEmpresa }}</h4>
-        </ion-text>
-        <ion-item>            
-          <ion-input name="email" type="email" [(ngModel)]="loginUser.email" required label="Ingrese su usuario" label-placement="floating" fill="outline" placeholder="Su nombre de usuario"></ion-input>
-        </ion-item>
-        <br>
-        <ion-item>                   
-          <ion-input name="password" type="password" [(ngModel)]="loginUser.password" required label="Coloque su clave" label-placement="floating" fill="outline" placeholder="Ingrese su contraseña">
-          <ion-input-password-toggle slot="end"></ion-input-password-toggle>
-        </ion-input>
-          
-
-        </ion-item>
-        <br>
-        <ion-button type="submit"  shape="round" expand="block" style="font-size: 18px;">
-          Ingresar
-        </ion-button>
+        </ion-text> 
+        <ion-card-content>        
+            <ion-input class="large-font" name="email" type="email" [(ngModel)]="loginUser.email" required label="Ingrese su usuario" label-placement="floating" fill="outline" placeholder="Su nombre de usuario"></ion-input>
+            <br>
+            <ion-input class="large-font" name="password" type="password" [(ngModel)]="loginUser.password" required label="Coloque su clave" label-placement="floating" fill="outline" placeholder="Ingrese su contraseña">
+              <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+            </ion-input>
+            <br>
+            <ion-button type="submit"  shape="round" expand="block" style="font-size: 18px;">
+              Ingresar
+            </ion-button>
+        </ion-card-content>
       </div>
     </div>   
   </form>

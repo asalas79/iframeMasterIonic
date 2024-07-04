@@ -149,7 +149,7 @@ export class UsuarioService {
     return new Promise<boolean>( resolve => {
       this.http.get<Definiciones>(`${ this.url1 }/usertoken/`).
         subscribe(resp => {
-          console.log( resp );          
+         // console.log( resp );          
           if(resp.ok){            
             this.usuario = resp.usuario;
             resolve(true);
@@ -169,7 +169,7 @@ export class UsuarioService {
 
     const entorno = await this.env.entorno(empresaCodigo);
     if(entorno){
-      console.log(entorno.url);
+      //console.log(entorno.url);
       this.url1 = entorno.url;
       this.empresa7 = empresaCodigo;
       this.urlMaster = entorno.urlMaster;

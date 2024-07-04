@@ -14,6 +14,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class TabsComponent  implements OnInit {
 
   nombreUsuario1: string = '';
+  nombreEmrpesa: string = '';
   subMenus: { [key: string]: boolean } = {};
 
   constructor(
@@ -28,7 +29,8 @@ export class TabsComponent  implements OnInit {
         try {
           const token = await this.usuarioService.validaToken();      
           if(token){
-            this.nombreUsuario1  = this.usuarioService.nombreUsuario1;         
+            this.nombreUsuario1  = this.usuarioService.nombreUsuario1;     
+            this.nombreEmrpesa   = this.usuarioService.nombreEmpresa;    
           }
           
         } catch (error) {

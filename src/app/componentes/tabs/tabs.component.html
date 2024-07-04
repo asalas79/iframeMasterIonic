@@ -1,77 +1,77 @@
 <ion-menu side="start" contentId="main-content">
   <ion-header>
     <ion-toolbar>
-       <ion-title>Master</ion-title>
+       <ion-title>{{nombreEmrpesa }}</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content class="">     
     <ion-list>          
-        <ion-item (click)="updateIframeSrc('/admin/general/usuarioslista')">
-          <ion-icon slot="start" name="person-circle-outline" style="font-size: 37px;color: dodgerblue;"></ion-icon>
+        <ion-item (click)="updateIframeSrc('/admin/general/usuarioslista')">          
+          <ion-icon slot="start" name="person" style="color: dodgerblue;"></ion-icon>
           <ion-label>{{nombreUsuario1}} </ion-label>
         </ion-item>
-        <ion-item (click)="updateIframeSrc('/escritorio/indexescritorio/indexescritorioacc')">
+        <ion-item (click)="updateIframeSrc('/escritorio/indexescritorio/indexescritorioacc')">          
           <ion-icon slot="start" name="home"></ion-icon>
           <ion-label>Inicio </ion-label>
         </ion-item>
-        <ion-item (click)="toggleSubMenu('guia')">
-          <ion-icon slot="start" name="volume-high-sharp"></ion-icon>            
+        <ion-item (click)="toggleSubMenu('guia')">         
+          <ion-icon slot="start" name="receipt"></ion-icon>          
           <ion-label>Guia</ion-label>
         </ion-item>
         <ion-list *ngIf="subMenus['guia']">
           <ion-item (click)="updateIframeSrc('/guia/indexguia/crearguia')">
-            <ion-label class="text-color">Nueva Guia</ion-label>
+            <ion-label class="text-color"> - Nueva Guia </ion-label>
           </ion-item>
           <ion-item (click)="updateIframeSrc('/reportes/indexreportes/buscarguiareportes')">
-            <ion-label class="text-color">Reporte de Guias</ion-label>
+            <ion-label class="text-color"> - Reporte de Guias</ion-label>
           </ion-item>
           <ion-item (click)="updateIframeSrc('/status/indexstatus/addguiastatus/uni/1')">
-            <ion-label class="text-color">Status a Guia Individual</ion-label>
+            <ion-label class="text-color"> - Status a Guia Individual</ion-label>
           </ion-item>
         </ion-list>
 
-        <ion-item (click)="toggleSubMenu('bodega')">
-          <ion-icon slot="start" name="volume-high-sharp"></ion-icon>            
+        <ion-item (click)="toggleSubMenu('bodega')">          
+          <ion-icon slot="start" name="file-tray-full"></ion-icon>           
           <ion-label>Bodega</ion-label>
         </ion-item>
         <ion-list *ngIf="subMenus['bodega']">
           <ion-item (click)="updateIframeSrc('/bodega/bodegarecibo/addbodega')">
-            <ion-label class="text-color">Nuevo Recibo</ion-label>
+            <ion-label class="text-color"> - Nuevo Recibo</ion-label>
           </ion-item>
           <ion-item (click)="updateIframeSrc('/bodega/bodegarecibo/listarbodega/rg/1')">
-            <ion-label class="text-color">Reporte</ion-label>
+            <ion-label class="text-color"> - Reporte</ion-label>
           </ion-item>         
         </ion-list>
 
-        <ion-item (click)="toggleSubMenu('paquetes')">
-          <ion-icon slot="start" name="volume-high-sharp"></ion-icon>            
+        <ion-item (click)="toggleSubMenu('paquetes')">          
+          <ion-icon slot="start" name="cube"></ion-icon>           
           <ion-label>Paquetes</ion-label>
         </ion-item>
         <ion-list *ngIf="subMenus['paquetes']">
           <ion-item (click)="updateIframeSrc('/bodega/bodegarecibo/addbodegadetalle')">
-            <ion-label class="text-color">Nuevo Paquete</ion-label>
+            <ion-label class="text-color"> - Nuevo Paquete</ion-label>
           </ion-item>
           <ion-item (click)="updateIframeSrc('/bodega/bodegarecibojs/indexitemsjs')">
-            <ion-label class="text-color">Reporte Paquetes</ion-label>
+            <ion-label class="text-color"> - Reporte Paquetes</ion-label>
           </ion-item>  
           <ion-item (click)="updateIframeSrc('/bodega/bodegarecibo/recibidorbodega')">
-            <ion-label class="text-color">Recibidor rapido</ion-label>
+            <ion-label class="text-color"> - Recibidor rapido</ion-label>
           </ion-item>       
         </ion-list>
 
-        <ion-item (click)="toggleSubMenu('consolidado')">
-          <ion-icon slot="start" name="volume-high-sharp"></ion-icon>            
+        <ion-item (click)="toggleSubMenu('consolidado')">          
+          <ion-icon slot="start" name="server"></ion-icon>        
           <ion-label>Consolidado</ion-label>
         </ion-item>
         <ion-list *ngIf="subMenus['consolidado']">
-          <ion-item (click)="updateIframeSrc('/bodega/bodegarecibo/addbodegadetalle')">
-            <ion-label class="text-color">Nuevo Consolidado</ion-label>
+          <ion-item (click)="updateIframeSrc('/consolidate/indexconsolidate/indexconsolidateacc/add/1')">
+            <ion-label class="text-color"> - Nuevo Consolidado</ion-label>
           </ion-item>
           <ion-item (click)="updateIframeSrc('/status/addconsostatus/addconsostatusacc')">
-            <ion-label class="text-color">Status consolidado</ion-label>
+            <ion-label class="text-color"> - Status consolidado</ion-label>
           </ion-item>
           <ion-item (click)="updateIframeSrc('/consolidate/indexconsolidate/indexconsolidateacc/guias/1')">
-            <ion-label class="text-color">Reporte</ion-label>
+            <ion-label class="text-color"> - Reporte</ion-label>
           </ion-item>                  
         </ion-list>  
     </ion-list>
@@ -88,24 +88,24 @@
 
 <div>
   <ion-tab-bar slot="bottom">
-    <ion-tab-button >
-      <ion-icon name="caret-back-outline" (click)="goBack()"></ion-icon>
+    <ion-tab-button (click)="goBack()">
+      <ion-icon name="caret-back-outline"  style="color:red"></ion-icon>
       Atras
     </ion-tab-button>
-    <ion-tab-button >
-      <ion-icon name="home" (click)="updateIframeSrc('/escritorio/indexescritorio/indexescritorioacc')"></ion-icon>
+    <ion-tab-button  (click)="updateIframeSrc('/escritorio/indexescritorio/indexescritorioacc')">
+      <ion-icon name="home" ></ion-icon>
       Inicio
     </ion-tab-button>
-    <ion-tab-button >
-      <ion-icon name="cube-outline" (click)="MenuConsolidar()"></ion-icon>
+    <ion-tab-button (click)="MenuConsolidar()">
+      <ion-icon name="cube" ></ion-icon>
       Consolidar
     </ion-tab-button>
-    <ion-tab-button>
-      <ion-icon name="grid-outline" (click)="enviarMensaje()"></ion-icon>
+    <ion-tab-button (click)="enviarMensaje()">
+      <ion-icon name="grid"  ></ion-icon>
       Opciones
     </ion-tab-button>
-    <ion-tab-button>
-      <ion-menu-button autoHide="false"><ion-icon name="menu" (click)="toggleMenu()"></ion-icon></ion-menu-button>        
+    <ion-tab-button (click)="toggleMenu()">
+      <ion-icon name="menu"  style="color: darkcyan;"></ion-icon>      
       Menu
     </ion-tab-button>
   </ion-tab-bar>

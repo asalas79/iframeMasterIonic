@@ -5,6 +5,8 @@ import { UiServiceService } from '../../services/ui-service.service';
 import { UrlsService } from 'src/app/services/urls.service'; 
 import { SharedService } from 'src/app/services/shared.service';
 import { Subscription } from 'rxjs';
+import { NetworkService } from 'src/app/services/network.service';
+import { SplashScreen } from '@capacitor/splash-screen';
 
 @Component({
   selector: 'app-home',
@@ -22,18 +24,30 @@ export class HomePage implements OnInit {
   colorBackground: string = '';
   colorFont: string = '';
   subMenus: { [key: string]: boolean } = {};
+  conexionInternet: boolean = true;
 
   constructor(
      private sanitizer: DomSanitizer ,
      private usuarioService:UsuarioService,
      private ui:UiServiceService, 
      private urlsService: UrlsService,
-     private sharedService: SharedService
+     private sharedService: SharedService,
+     private networkService: NetworkService
     ) { 
     this.iframeSrc = '';
   }
 
   async ngOnInit() {
+
+    this.networkService.getNetworkStatus().subscribe(isConnected => {
+      if (isConnected) {
+        this.conexionInternet = true;
+        //this.ui.presentToast('Conexión a internet disponible', 'success');
+      } else {
+        this.conexionInternet = false;
+        this.ui.presentToast('Sin conexión a internet', 'danger');
+      }
+    });
 
     this.subscription = this.sharedService.triggerFunction$.subscribe(() => {
       this.activarMenuIframe();
@@ -63,7 +77,12 @@ export class HomePage implements OnInit {
     this.ui.spinerLoading('Cargando..');
     setTimeout(() => {
       this.ui.spinerCerrar();
-    }, 1000);       
+    }, 2000);  
+
+  }
+
+  async ionViewWillEnter(){
+    await SplashScreen.hide();
   }
 
   ngOnDestroy() {
