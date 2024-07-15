@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">Courier</string>
-    <string name="title_activity_main">Courier</string>
-    <string name="package_name">com.managercargo.courier</string>
-    <string name="custom_url_scheme">com.managercargo.courier</string>
-</resources>

@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { UsuarioService } from '../../services/usuario.service';
 import { UiServiceService } from '../../services/ui-service.service';
@@ -7,13 +7,16 @@ import { SharedService } from 'src/app/services/shared.service';
 import { Subscription } from 'rxjs';
 import { NetworkService } from 'src/app/services/network.service';
 import { SplashScreen } from '@capacitor/splash-screen';
+import { Browser } from '@capacitor/browser';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage implements AfterViewInit, OnInit {
+
+  //@ViewChild('iframe') iframe: ElementRef<HTMLIFrameElement> | undefined;
 
   private subscription?: Subscription;
 
@@ -35,6 +38,23 @@ export class HomePage implements OnInit {
      private networkService: NetworkService
     ) { 
     this.iframeSrc = '';
+  }
+
+  //Para capturar los mensaje que llegan del programa para abrir openwindows
+  ngAfterViewInit(): void {
+    //throw new Error('Method not implemented.');
+    window.addEventListener('message', (event) => {
+      if (event.data && event.data.type === 'open' && event.data.url) {
+        this.openWithCapacitorBrowser(event.data.url);
+      }
+    });
+  }
+
+  async openWithCapacitorBrowser(url: string) {
+    //url = this.urlMaster + url + '?tokenion='+this.usuarioService.token;
+    url = this.urlMaster + url;
+    url  = url.replace('/public/', '/');
+    await Browser.open({ url });
   }
 
   async ngOnInit() {

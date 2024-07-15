@@ -19,6 +19,8 @@ export class LoginPage implements  OnInit {
     empresaCodigo: ''
   };
 
+  playgoogle:number = 0;
+
  /* loginUser = {
     email:'super',
     password: '1234567',
@@ -61,6 +63,13 @@ export class LoginPage implements  OnInit {
           this.vista = true;          
           this.nombreEmpresa = this.usuarioService.nombreEmpresa;
           this.logo = `${ this.usuarioService.urlMaster }/images/logos/${this.usuarioService.logo}`;
+
+          //PARA PRUEBAS DE PLAY DE GOOGLE
+          if( this.loginUser.empresaCodigo == 'admin') {            
+              this.playgoogle = 1;
+              this.login();
+          }
+
         }else{
           this.uiservice.presentToast('No existe este código de empresa','danger');
         }
@@ -69,11 +78,19 @@ export class LoginPage implements  OnInit {
     }
   }
 
-  async login( fLogin: NgForm){
-    if( fLogin.invalid){
-      this.uiservice.alertaInformativo('Por favor colocar un usuario o contraseña');
-      return;
-    }    
+  async login( fLogin?: NgForm){
+    
+    //Puebas para google play
+    if(this.playgoogle == 1 ){
+      this.loginUser.email = 'admin';
+      this.loginUser.password = '1234567';
+    }else{
+      if( fLogin?.invalid){
+        this.uiservice.alertaInformativo('Por favor colocar un usuario o contraseña');
+        return;
+      }   
+    } 
+
     const valido = await this.usuarioService.login ( this.loginUser.email, this.loginUser.password);    
 
     if( valido ){

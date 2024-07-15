@@ -107,7 +107,7 @@ export class UsuarioService {
   logout(){
     this.token   = '';
     this.usuario = '';
-    //this.storage.clear();
+    this.storage.clear();
     this.menuCtrl.toggle();
     App.exitApp();
     this.navCtrl.navigateRoot('/login',{ animated: true });
