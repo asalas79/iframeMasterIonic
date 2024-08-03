@@ -8,15 +8,15 @@
     <ion-list>          
         <ion-item (click)="updateIframeSrc('/admin/general/usuarioslista')">          
           <ion-icon slot="start" name="person" style="color: dodgerblue;"></ion-icon>
-          <ion-label>{{nombreUsuario1}} </ion-label>
+          <ion-label><strong>{{nombreUsuario1}}</strong> </ion-label>
         </ion-item>
         <ion-item (click)="updateIframeSrc('/escritorio/indexescritorio/indexescritorioacc')">          
           <ion-icon slot="start" name="home"></ion-icon>
-          <ion-label>Inicio </ion-label>
+          <ion-label><strong>Inicio</strong> </ion-label>
         </ion-item>
         <ion-item (click)="toggleSubMenu('guia')">         
           <ion-icon slot="start" name="receipt"></ion-icon>          
-          <ion-label>Guia</ion-label>
+          <ion-label><strong>Guia</strong></ion-label>
         </ion-item>
         <ion-list *ngIf="subMenus['guia']">
           <ion-item (click)="updateIframeSrc('/guia/indexguia/crearguia')">
@@ -32,7 +32,7 @@
 
         <ion-item (click)="toggleSubMenu('bodega')">          
           <ion-icon slot="start" name="file-tray-full"></ion-icon>           
-          <ion-label>Bodega</ion-label>
+          <ion-label><strong>Bodega</strong></ion-label>
         </ion-item>
         <ion-list *ngIf="subMenus['bodega']">
           <ion-item (click)="updateIframeSrc('/bodega/bodegarecibo/addbodega')">
@@ -45,7 +45,7 @@
 
         <ion-item (click)="toggleSubMenu('paquetes')">          
           <ion-icon slot="start" name="cube"></ion-icon>           
-          <ion-label>Paquetes</ion-label>
+          <ion-label><strong>Paquetes</strong></ion-label>
         </ion-item>
         <ion-list *ngIf="subMenus['paquetes']">
           <ion-item (click)="updateIframeSrc('/bodega/bodegarecibo/addbodegadetalle')">
@@ -61,7 +61,7 @@
 
         <ion-item (click)="toggleSubMenu('consolidado')">          
           <ion-icon slot="start" name="server"></ion-icon>        
-          <ion-label>Consolidado</ion-label>
+          <ion-label><strong>Consolidado</strong></ion-label>
         </ion-item>
         <ion-list *ngIf="subMenus['consolidado']">
           <ion-item (click)="updateIframeSrc('/consolidate/indexconsolidate/indexconsolidateacc/add/1')">
